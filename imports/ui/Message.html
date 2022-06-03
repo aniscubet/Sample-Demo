@@ -1,0 +1,17 @@
+<template name="messageForm">
+  <form class="add-message-form">
+    <input type="text" name="message" id="inputMessage">
+    <button type="submit">Post Message</button>
+  </form>
+</template>
+
+<template name="messageList">
+  <li>
+    <span>{{message}}
+      <br>
+      <small>Created At: {{formatDate createdAt}}</small></span>
+    {{#if isSameUser userId getUser._id}}
+      <button class="delete">Remove</button>
+    {{/if}}
+  </li>
+</template>

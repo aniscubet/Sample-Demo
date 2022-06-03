@@ -1,0 +1,37 @@
+<body>
+  {{> mainContainer}}
+</body>
+
+<template name="mainContainer">
+  <div class="app">
+    <header>
+      <div class="app-bar">
+        <div class="app-header">
+          <h1>Simple Demo</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="main">
+      {{#if isUSerLogged}}
+        <div class="logout">
+          <button class="logoutButton" type="button">Logout</button>
+        </div>
+
+        {{> messageForm}}
+
+        {{#if isLoading}}
+        <div class="loading">Loading...</div>
+        {{/if}}
+
+        <ul class="messages">
+          {{#each messages user_id=getUser._id}}
+          {{> messageList}}
+          {{/each}}
+        </ul>
+      {{else}}
+        {{> login}}
+      {{/if}}
+    </div>
+  </div>
+</template>
